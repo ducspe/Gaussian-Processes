@@ -11,3 +11,6 @@ Fixed the above. TODO: Check isosurface.m from matlab and try to translate the c
 Added the isosurface with a contour of value zero. The reconstructed bunny is missing a ear though...
 Removed open3d and used mayavi instead, which is based on C++'s VTK library and is much closer/similar to Matlab functionality.
 TODO: inject prior knowledge in the prediction process.
+
+# prior.py:
+Injected the prior distribution when calculating the Gaussian mean. This way we can make use of apriori defined surfaces where the reconstruction has low confidence. TODO: fix the matrix inversion because it is too inneficient.
