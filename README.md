@@ -14,3 +14,6 @@ TODO: inject prior knowledge in the prediction process.
 
 # prior.py:
 Injected the prior distribution when calculating the Gaussian mean. This way we can make use of apriori defined surfaces where the reconstruction has low confidence. TODO: fix the matrix inversion because it is too inneficient.
+
+# fix_inverse.py:
+Inverse of the matrix is computed more efficiently. This is very important because in the worst case scenario this operation can have complexity of O(N^3). Hence it wouldn't scale for large surfaces with high point density (/non-sparse surfaces).
