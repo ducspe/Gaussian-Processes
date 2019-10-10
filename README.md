@@ -17,3 +17,6 @@ Injected the prior distribution when calculating the Gaussian mean. This way we 
 
 # fix_inverse.py:
 Inverse of the matrix is computed more efficiently. This is very important because in the worst case scenario this operation can have complexity of O(N^3). Hence it wouldn't scale for large surfaces with high point density (/non-sparse surfaces).
+
+# nearpoints.py:
+Use a KDTree data structure to detect neighboring points surrounding the center point on which the camera focuses. Because pointclouds do not have a natural way of ordering points, like in a 2D image for instance, we cannot simply convert them to arrays and extract slices from these resulting arrays. If we do this, we end up with points scattered in different regions of the original pointcloud and the GP algorithm has therefore rubbish training data: many patches of nearby points, but separated by big empty spaces (of missing training data). These empty spaces are treated as dicontinuities and the GP algorithm tries to interpolate the discontinuities, which is not what we want. Hence, the KDTree helps us remove the discontinuities problem...
